@@ -107,11 +107,15 @@ export default function Services() {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col w-full py-4 overflow-y-auto">
-            {services.bands.map((band) => (
-              <div
+          <div className="flex flex-col w-full gap-3 px-4 pb-4">
+            {services.bands.map((band, idx) => (
+              <motion.div
                 key={band.num}
-                className="service-band w-full border-t border-[#E6E6E0]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-5%" }}
+                transition={{ duration: 0.5, ease: EASE.premium, delay: idx * 0.08 }}
+                className="service-band w-full border border-[#E6E6E0] rounded-sm"
                 style={{ background: band.color }}
               >
                 <div className="service-inner">
@@ -132,7 +136,7 @@ export default function Services() {
                     </a>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}

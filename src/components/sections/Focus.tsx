@@ -66,14 +66,13 @@ export default function Focus() {
 
   // Mobile fallback reveal — the section isn't pinned below the md breakpoint,
   // so scrollYProgress simply tracks the section's natural (un-inflated) height.
-  // Driven from scrollYProgress rather than whileInView, since whileInView does
-  // not reliably fire for content inside this layout (see RevealIn note above).
-  const mY1 = useScrollRange(scrollYProgress, [0, 0.3], [40, 0]);
-  const mOpacity1 = useScrollRange(scrollYProgress, [0, 0.3], [0, 1]);
-  const mY2 = useScrollRange(scrollYProgress, [0.12, 0.42], [40, 0]);
-  const mOpacity2 = useScrollRange(scrollYProgress, [0.12, 0.42], [0, 1]);
-  const mY3 = useScrollRange(scrollYProgress, [0.24, 0.54], [40, 0]);
-  const mOpacity3 = useScrollRange(scrollYProgress, [0.24, 0.54], [0, 1]);
+  // Wider ranges ensure cards reveal even when the user scrolls quickly on mobile.
+  const mY1 = useScrollRange(scrollYProgress, [0, 0.4], [40, 0]);
+  const mOpacity1 = useScrollRange(scrollYProgress, [0, 0.4], [0, 1]);
+  const mY2 = useScrollRange(scrollYProgress, [0.1, 0.55], [40, 0]);
+  const mOpacity2 = useScrollRange(scrollYProgress, [0.1, 0.55], [0, 1]);
+  const mY3 = useScrollRange(scrollYProgress, [0.2, 0.7], [40, 0]);
+  const mOpacity3 = useScrollRange(scrollYProgress, [0.2, 0.7], [0, 1]);
 
   // Text column reveal — driven by the entrance tracker (finishes as the
   // section reaches the top of the viewport), not the pin-progress tracker,
