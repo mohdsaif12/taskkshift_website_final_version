@@ -22,7 +22,7 @@ export default function CollageReveal() {
   const yHatch = useScrollRange(scrollYProgress, [0, 1], [8, -8]);
 
   return (
-    <section className="relative w-full bg-white py-8 md:py-10" ref={sectionRef}>
+    <section className="relative w-full bg-white py-8 md:py-10 overflow-x-hidden" ref={sectionRef}>
       {/* Outer container to allow overflow-visible for the corner line boxes */}
       <div className="relative w-[90%] max-w-[1280px] mx-auto overflow-visible">
         

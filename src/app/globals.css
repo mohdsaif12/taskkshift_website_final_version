@@ -24,7 +24,13 @@
 ───────────────────────────────────────────────────────────────────────────── */
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Prevents the page from being scrollable horizontally on mobile.
+     overflow-x on body alone is not enough in Safari / mobile Chrome. */
+  max-width: 100%;
+}
 
 body {
   margin: 0;
@@ -33,6 +39,10 @@ body {
   font-family: 'Schibsted Grotesk', sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  max-width: 100%;
+  /* Contain any stray absolutely/fixed positioned children that bleed
+     outside the viewport width (marquee, parallax elements, etc.). */
+  position: relative;
 }
 
 ::selection { background: var(--blue); color: #fff; }
@@ -667,6 +677,9 @@ a { color: inherit; }
   color: var(--blue);
   line-height: 0.9;
   white-space: nowrap;
+  /* Prevent this giant text from blowing out the viewport width on mobile */
+  overflow: hidden;
+  max-width: 100%;
 }
 .industries-marquee-text {
   font-family: Newsreader, serif;
