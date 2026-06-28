@@ -26,10 +26,11 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
-  /* Prevents the page from being scrollable horizontally on mobile.
-     overflow-x on body alone is not enough in Safari / mobile Chrome. */
-  max-width: 100%;
+  /* overflow-x: clip clips content without creating a scroll container.
+     Using "hidden" here would make <html> the scroll container and BREAK
+     position:sticky (stacking cards, pinned sections) on desktop.
+     "clip" prevents horizontal scroll on mobile without that side-effect. */
+  overflow-x: clip;
 }
 
 body {
@@ -38,11 +39,8 @@ body {
   color: var(--ink);
   font-family: 'Schibsted Grotesk', sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  max-width: 100%;
-  /* Contain any stray absolutely/fixed positioned children that bleed
-     outside the viewport width (marquee, parallax elements, etc.). */
-  position: relative;
+  /* Same reasoning: clip instead of hidden so sticky children still work. */
+  overflow-x: clip;
 }
 
 ::selection { background: var(--blue); color: #fff; }
