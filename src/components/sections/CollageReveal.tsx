@@ -1,7 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { motion, useScroll } from "framer-motion";
+import { useScrollRange } from "@/components/motion/scroll-utils";
 
 export default function CollageReveal() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -12,18 +14,23 @@ export default function CollageReveal() {
     offset: ["start end", "end start"],
   });
 
-  // Calculate smooth parallax translation for the single collage image using percentages
-  const yParallax = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  // Foreground layer: the collage image itself.
+  const yParallax = useScrollRange(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  // Background depth layer: corner hatch decorations drift at a smaller,
+  // opposite-leaning range so they read as sitting behind the image plane
+  // rather than locked to the same motion.
+  const yHatch = useScrollRange(scrollYProgress, [0, 1], [8, -8]);
 
   return (
-    <section className="relative w-full bg-white py-12 md:py-16" ref={sectionRef}>
+    <section className="relative w-full bg-white py-8 md:py-10" ref={sectionRef}>
       {/* Outer container to allow overflow-visible for the corner line boxes */}
       <div className="relative w-[90%] max-w-[1280px] mx-auto overflow-visible">
         
         {/* Top-Left Green/Lime Hatch Box (Subtle Gray-Green) */}
-        <div
+        <motion.div
           className="absolute top-[-20px] left-[-20px] w-[130px] h-[90px] md:top-[-45px] md:left-[-45px] md:w-[260px] md:h-[180px] z-20 pointer-events-none"
           style={{
+            y: yHatch,
             backgroundImage: `repeating-linear-gradient(
               135deg,
               rgba(170, 185, 150, 0.12) 0px,
@@ -35,9 +42,10 @@ export default function CollageReveal() {
         />
 
         {/* Bottom-Right Blue Hatch Box (Subtle Gray-Blue) */}
-        <div
+        <motion.div
           className="absolute bottom-[-20px] right-[-20px] w-[130px] h-[90px] md:bottom-[-45px] md:right-[-45px] md:w-[260px] md:h-[180px] z-20 pointer-events-none"
           style={{
+            y: yHatch,
             backgroundImage: `repeating-linear-gradient(
               135deg,
               rgba(150, 165, 195, 0.12) 0px,
@@ -60,11 +68,12 @@ export default function CollageReveal() {
               top: "-15%",
             }}
           >
-            <img
+            <Image
               src="/ui_collage_placeholder.png"
               alt="UI Design Collage"
-              className="w-full h-full object-cover filter brightness-[0.98]"
-              loading="eager"
+              fill
+              className="object-cover filter brightness-[0.98]"
+              priority
             />
           </motion.div>
         </div>

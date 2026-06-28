@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { navLinks, navCTA } from "@/lib/content";
 import { EASE } from "@/components/motion/easings";
@@ -8,11 +9,10 @@ import { EASE } from "@/components/motion/easings";
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
-  const menuRef = useRef<HTMLDivElement>(null);
 
   // Active section tracking via IntersectionObserver
   useEffect(() => {
-    const sectionIds = ["top", "services", "work", "faq", "contact", "pricing"];
+    const sectionIds = ["top", "services", "work", "faq", "contact"];
     const observers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
@@ -58,8 +58,7 @@ export default function Nav() {
     >
       {/* Logo — exact structure from index.html */}
       <a href="#top" className="logo" aria-label="TaskShift AI — home">
-        <span className="logo-mark" aria-hidden="true" />
-        <span className="logo-text">TaskShift AI</span>
+        <Image src="/logo.png" alt="TaskShift AI" width={172} height={34} priority />
       </a>
 
       {/* Hamburger toggle — visible only on mobile */}

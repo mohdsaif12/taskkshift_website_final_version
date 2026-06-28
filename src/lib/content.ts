@@ -8,33 +8,33 @@ export const navLinks = [
   { label: "Home", href: "#top" },
   { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
-  { label: "Pricing", href: "#pricing" },
   { label: "FAQs", href: "#faq" },
 ] as const;
 
-export const navCTA = { label: "Get in Touch", href: "#contact" };
+export const navCTA = { label: "Book a free audit", href: "#contact" };
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 export const hero = {
-  eyebrow: "— AI Automation Agency",
+  eyebrow: "— AI Automation for Local Businesses",
   // Single headline block — rendered as one h1 with accent span inside
-  headlinePlain: "Smarter automation for the businesses that ",
-  headlineAccent: "keep your town running",
-  headlineLines: [
-    "Smarter automation for the businesses that keep your town running.",
-  ],
+  headlinePlain: "Stop losing leads to a phone that ",
+  headlineAccent: "doesn't get answered.",
   subline:
-    "TaskShift AI builds voice agents, WhatsApp automations and custom tools that catch every lead and handle the busywork — 24/7, so you can focus on the work that matters.",
+    "AI voice agents and WhatsApp automation that catch every call, every enquiry, every after-hours lead — so nothing slips through again.",
   note: "Built for local businesses, ",
   noteAccent: "end to end",
-  cta: { label: "Request a free audit", href: "#contact" },
+  // TODO(Saif): point this at a real recorded demo call once you have one —
+  // until then it's pointing at the booking form, but the copy promises a
+  // demo, so this is a placeholder, not the final destination.
+  cta: { label: "See it answer a real call →", href: "#contact" },
   scrollBadge: "SCROLL · TO · EXPLORE ·",
 };
 
 // ─── Focus / What Sets Us Apart ───────────────────────────────────────────────
 export const focus = {
   eyebrow: "— Our Focus",
-  headline: "What sets us apart.",
+  headlinePlain: "Why local businesses choose ",
+  headlineAccent: "us.",
   lead: "We don't sell software and disappear. We build, integrate and tune the automations that take real work off your plate.",
   note: "Local-first, results-obsessed, always-on.",
   cards: [
@@ -42,13 +42,13 @@ export const focus = {
       color: "#D6E3C6" as const,
       offsetPx: 80,
       title: "Local-first",
-      body: "Built for the realities of clinics, trades and storefronts — not bloated enterprise software.",
+      body: "We build for how local trades and storefronts actually run — not enterprise software you have to bend your business around.",
     },
     {
       color: "#AFC4F2" as const,
       offsetPx: 40,
       title: "Done for you",
-      body: "Strategy, build, integration and ongoing tuning — fully handled, no technical work on your side.",
+      body: "Strategy, build and integration, handled end to end — so you never need an in-house developer or IT team.",
     },
     {
       color: "#CDBDF2" as const,
@@ -62,10 +62,10 @@ export const focus = {
 // ─── Services ─────────────────────────────────────────────────────────────────
 export const services = {
   eyebrow: "— Our Services",
-  headlinePlain: "What We ",
-  headlineAccent: "Offer!",
+  headlinePlain: "Where We ",
+  headlineAccent: "Start.",
   lead: "From the first ringing phone to the website that closes the deal — we automate the full journey.",
-  link: { label: "Contact Us", href: "#contact" },
+  link: { label: "Book a free audit", href: "#contact" },
   bands: [
     {
       num: "01",
@@ -96,26 +96,46 @@ export const services = {
 
 // ─── Work / Selected Work ────────────────────────────────────────────────────
 export const work = {
-  eyebrow: "— Our Work",
-  headlinePlain: "Check Out\nOur ",
-  headlineAccent: "Wins!",
-  lead: "A look at the automations we've shipped for local businesses — and what they changed.",
-  link: { label: "Learn More", href: "#contact" },
+  eyebrow: "— Selected Work",
+  headlinePlain: "Things we've ",
+  headlineAccent: "built.",
+  lead: "A selection of systems and concept builds — from live voice agents to full automation pipelines.",
+  link: { label: "Book a free audit", href: "#contact" },
   projects: [
     {
-      metric: "+38%",
-      industry: "Dental clinic",
-      body: "A 24/7 voice agent caught every after-hours call and pushed booked appointments up 38%.",
+      title: "AI Voice Receptionist",
+      tag: "Aesthetics Clinic · Concept",
+      description: "Inbound call handling, appointment booking and WhatsApp confirmation.",
+      imageUrl:
+        "https://images.unsplash.com/photo-1654618977232-a6c6dea9d1e8?q=80&w=2486&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      metric: "0",
-      industry: "Home services",
-      body: "Zero missed calls in 90 days — every enquiry answered, qualified and routed automatically.",
+      title: "WhatsApp Booking Automation",
+      tag: "Salon & Spa · Concept",
+      description: "Automated booking confirmations, reminders and rebooking — all over WhatsApp.",
+      imageUrl:
+        "https://images.unsplash.com/photo-1624996752380-8ec242e0f85d?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      metric: "11h",
-      industry: "Salon & spa",
-      body: "Eleven hours a week saved on admin once WhatsApp bookings and reminders went automatic.",
+      title: "AI Chatbot Assistant",
+      tag: "Real Estate · Concept",
+      description: "A custom-trained chatbot that answers property questions instantly and books viewings — on the website and WhatsApp.",
+      imageUrl:
+        "https://images.unsplash.com/photo-1688733720228-4f7a18681c4f?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      title: "Immersive Web Build",
+      tag: "Al Noor Hajj & Umrah · Build",
+      description: "Video-backed cinematic hero with a curtain-split reveal for a travel brand.",
+      imageUrl:
+        "https://images.unsplash.com/photo-1574717025058-2f8737d2e2b7?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      title: "Lead Generation Engine",
+      tag: "B2B Outbound · Build",
+      description: "Automated lead sourcing, enrichment and outreach pipeline — Apollo plus AI-generated targeting.",
+      imageUrl:
+        "https://images.unsplash.com/photo-1726066012698-bb7a3abce786?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ],
 };
@@ -139,11 +159,49 @@ export const tools = {
   ],
 };
 
+// ─── Industries served (scrolling marquee band) ───────────────────────────────
+export const industries = {
+  items: [
+    "Clinics",
+    "Home Services",
+    "Salons & Spas",
+    "Restaurants",
+    "Auto Shops",
+    "Real Estate",
+    "Fitness Studios",
+    "Retail",
+  ],
+};
+
 // ─── Stats ────────────────────────────────────────────────────────────────────
 export const stats = {
   eyebrow: "— By The Numbers",
   headline: "Built for measurable impact.",
-  honestLine: "Early-stage studio. Selective client list. Founder-led builds.",
+  // Real client feedback. The Incorvia.ae / Underground Fitness quotes were
+  // given verbally in Hindi with explicit permission to write them up in
+  // English — paraphrased faithfully, not invented. Verification contact
+  // details for the WeCare quote are kept off the public site, not lost —
+  // ask Saif if you need them.
+  testimonials: [
+    {
+      quote:
+        "Saif helped us build an AI-powered podcast SaaS prototype using Make, Airtable and Perplexity for WeCareAi Solutions.",
+      name: "Sipho Manana",
+      role: "Co-Founder, WeCare Group",
+    },
+    {
+      quote:
+        "The website and animations look incredibly professional. Most agencies build sites that don't feel this polished — they used animation smartly, not just for show.",
+      name: "Incorvia.ae",
+      role: "Website & Brand Build",
+    },
+    {
+      quote:
+        "The WhatsApp automation reminds members about subscriptions, collects fees and reactivates old leads — it's increased our revenue significantly.",
+      name: "Underground Fitness",
+      role: "WhatsApp Automation Client",
+    },
+  ],
   items: [
     {
       value: "24/7",
@@ -206,16 +264,19 @@ export const faq = {
 // ─── Contact ──────────────────────────────────────────────────────────────────
 export const contact = {
   eyebrow: "— Book A Call",
-  headline: "Book your ",
-  headlineAccent: "free audit!",
+  headline: "Let's find your ",
+  headlineAccent: "biggest leak.",
   lead: "30 minutes, no pitch. We map where you're losing leads and time, then show you exactly what we'd automate first.",
-  cta: { label: "Request a Consultation", href: "mailto:hello@taskkshiftai.com" },
+  cta: { label: "Book a free audit", href: "mailto:saif@taskkshiftai.com" },
+  // Assumed +91 (India) country code prepended to the number given —
+  // confirm this is correct if you intended a different country code.
+  whatsappNumber: "917905581778",
   // background: #F7E7A8 (yellow) — from style.css .contact-section
   tags: [
-    { text: "Dental",   style: "top:36px; left:6%;",    bg: "var(--blue)",     color: "#fff",    rotate: -4, delay: 0   },
-    { text: "Plumbing", style: "top:120px; right:8%;",  bg: "#CDBDF2",         color: "#1a1a1a", rotate:  5, delay: 0.5 },
-    { text: "Salons",   style: "bottom:90px; left:10%;",bg: "#fff",            color: "#1a1a1a", rotate:  3, delay: 1   },
-    { text: "Auto",     style: "bottom:60px; right:12%;",bg: "#AFC4F2",        color: "#1a1a1a", rotate: -5, delay: 1.5 },
+    { text: "Dental",   position: { top: "36px", left: "6%" },     bg: "var(--blue)", color: "#fff",    rotate: -4, delay: 0   },
+    { text: "Plumbing", position: { top: "120px", right: "8%" },   bg: "#CDBDF2",      color: "#1a1a1a", rotate:  5, delay: 0.5 },
+    { text: "Salons",   position: { bottom: "90px", left: "10%" }, bg: "#fff",         color: "#1a1a1a", rotate:  3, delay: 1   },
+    { text: "Auto",     position: { bottom: "60px", right: "12%" },bg: "#AFC4F2",      color: "#1a1a1a", rotate: -5, delay: 1.5 },
   ],
 };
 
@@ -226,8 +287,9 @@ export const footer = {
     { label: "LinkedIn", href: "#" },
     { label: "Twitter / X", href: "#" },
     { label: "Instagram", href: "#" },
-    { label: "Email", href: "mailto:hello@taskkshiftai.com" },
+    { label: "Email", href: "mailto:saif@taskkshiftai.com" },
   ],
   bottomLeft: "© 2025 TaskShift AI · All rights reserved",
   bottomRight: "Lucknow, India · Dubai, UAE",
+  tagline: "Capture every lead. Automate the rest.",
 };

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Schibsted_Grotesk, Newsreader } from "next/font/google";
+import { Schibsted_Grotesk, Newsreader, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 
@@ -15,6 +15,15 @@ const newsreader = Newsreader({
   style: ["italic"],
   weight: ["400", "500", "600"],
   variable: "--font-italic",
+  display: "swap",
+});
+
+// Eyebrow/label font — self-hosted via next/font instead of a manual Google
+// Fonts <link>, so it's optimized and doesn't block on an external request.
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -43,26 +52,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${schibsted.variable} ${newsreader.variable}`}>
+    <html
+      lang="en"
+      className={`${schibsted.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        {/* JetBrains Mono for eyebrows/labels */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         <style>{`
-          :root {
-            --font-mono: 'JetBrains Mono', monospace;
-          }
           .eyebrow {
-            font-family: var(--font-mono);
+            font-family: var(--font-mono), monospace;
           }
           body {
             font-family: var(--font-display, 'Schibsted Grotesk', sans-serif);

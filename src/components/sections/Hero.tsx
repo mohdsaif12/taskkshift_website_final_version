@@ -12,16 +12,20 @@ export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
   const { handleMouseMove, handleMouseLeave } = useMagneticHover(4);
 
-  // Parallax on the glow exactly like the HTML
+  // Two-layer scroll parallax for a sense of depth, not a single flat
+  // transform: the glow (background) drifts down slowly relative to scroll,
+  // the content (foreground) rises slightly faster — the differential
+  // between the two is what reads as "depth," not either value alone.
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
-  const glowY = useScrollRange(scrollYProgress, [0, 1], [0, 60]);
+  const glowY = useScrollRange(scrollYProgress, [0, 1], [0, 90]);
+  const contentY = useScrollRange(scrollYProgress, [0, 1], [0, -36]);
 
   return (
     <header id="top" ref={containerRef} className="hero min-h-[90vh] flex items-center">
-      {/* .hero-glow — exact position/style from style.css */}
+      {/* .hero-glow — exact position/style from style.css, now the slow background layer */}
       <motion.div
         className="hero-glow"
         aria-hidden="true"
@@ -31,7 +35,7 @@ export default function Hero() {
         transition={{ duration: 1.2, ease: "linear" }}
       />
 
-      <div className="hero-inner w-full">
+      <motion.div className="hero-inner w-full" style={{ y: contentY }}>
         {/* Eyebrow */}
         <motion.p
           className="eyebrow"
@@ -50,8 +54,8 @@ export default function Hero() {
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             transition={{ duration: 1.2, ease: EASE.cinematic, delay: 0.4 }}
           >
-            Smarter automation for the businesses that{" "}
-            <span className="accent">keep your town running</span>
+            {hero.headlinePlain}
+            <span className="accent">{hero.headlineAccent}</span>
             <BlinkingCursor className="text-[var(--blue)] font-light ml-1" />
           </motion.h1>
         </div>
@@ -144,7 +148,7 @@ export default function Hero() {
             </span>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </header>
   );
 }

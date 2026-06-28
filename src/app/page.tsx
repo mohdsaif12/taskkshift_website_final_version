@@ -4,6 +4,7 @@ import CollageReveal from "@/components/sections/CollageReveal";
 import Focus from "@/components/sections/Focus";
 import Tools from "@/components/sections/Tools";
 import Work from "@/components/sections/Work";
+import IndustriesMarquee from "@/components/sections/IndustriesMarquee";
 import Services from "@/components/sections/Services";
 import Stats from "@/components/sections/Stats";
 import FAQ from "@/components/sections/FAQ";
@@ -17,11 +18,12 @@ export default function Home() {
       <Hero />
       <CollageReveal />
       <Focus />
-      <Tools />
       <Work />
+      <IndustriesMarquee />
       <Services />
       <Stats />
       <FAQ />
+      <Tools />
       <Contact />
       <Footer />
     </main>

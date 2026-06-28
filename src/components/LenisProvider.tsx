@@ -20,12 +20,12 @@ export default function LenisProvider({
 
     lenisRef.current = lenis;
 
-    function raf(time: number) {
+    let rafId: number;
+    const update = (time: number) => {
       lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    const rafId = requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(update);
+    };
+    rafId = requestAnimationFrame(update);
 
     return () => {
       cancelAnimationFrame(rafId);

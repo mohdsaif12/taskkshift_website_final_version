@@ -73,7 +73,7 @@ a { color: inherit; }
 }
 
 .eyebrow {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--muted);
   margin: 0 0 20px;
   letter-spacing: 0.01em;
@@ -81,16 +81,16 @@ a { color: inherit; }
 
 .h2 {
   font-weight: 800;
-  font-size: clamp(34px, 5.4vw, 72px);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
-  margin: 0 0 26px;
+  font-size: clamp(28px, 4.2vw, 53px);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
 }
-.h2-tight { line-height: 0.98; margin: 0; }
+.h2-tight { line-height: 1.3; margin: 0; }
 
 .lead {
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.25;
   color: var(--body-text);
   margin: 0 0 18px;
   max-width: 44ch;
@@ -172,39 +172,16 @@ a { color: inherit; }
   align-items: center;
   justify-content: space-between;
   padding: 20px var(--pad);
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #FFFFFF;
   border-bottom: 1px solid #ECECE8;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 11px;
   text-decoration: none;
   color: var(--ink);
 }
-.logo-mark {
-  width: 26px;
-  height: 18px;
-  border-radius: 999px 999px 999px 4px !important;
-  background: var(--orange);
-  display: inline-block;
-  position: relative;
-  flex-shrink: 0;
-}
-.logo-mark::before {
-  content: '';
-  position: absolute;
-  left: -7px;
-  bottom: 0;
-  width: 14px;
-  height: 13px;
-  border-radius: 50% !important;
-  background: var(--orange);
-}
-.logo-text { font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
 
 .nav-links {
   display: flex;
@@ -267,20 +244,31 @@ a { color: inherit; }
 }
 .hero-inner { position: relative; max-width: 980px; }
 
+/* Slow-moving background glow reused across pinned sections to give the
+   foreground card/text choreography something visibly "behind" it. */
+.section-glow {
+  position: absolute;
+  width: min(620px, 50vw);
+  height: 520px;
+  background: radial-gradient(closest-side, rgba(175, 196, 242, 0.22), transparent 72%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
 .hero-title {
   font-weight: 800;
-  font-size: clamp(40px, 6.6vw, 96px);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  font-size: clamp(32px, 4.4vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   margin: 0;
   text-wrap: balance;
 }
 
 .hero-lead {
-  margin: 34px 0 0;
+  margin: 24px 0 0;
   max-width: 60ch;
   font-size: clamp(16px, 1.5vw, 20px);
-  line-height: 1.55;
+  line-height: 1.3;
   color: var(--body-text);
 }
 
@@ -334,8 +322,8 @@ a { color: inherit; }
   gap: 22px;
   align-items: flex-start;
 }
-.focus-card h3 { font-weight: 700; font-size: 24px; letter-spacing: -0.01em; margin: 0 0 10px; }
-.focus-card p { font-size: 15px; line-height: 1.55; color: #23231f; margin: 0; }
+.focus-card h3 { font-weight: 700; font-size: 26px; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 10px; }
+.focus-card p { font-size: 15px; line-height: 1.45; color: #23231f; margin: 0; }
 
 .dots { display: flex; gap: 7px; padding-top: 8px; flex: none; }
 .dots span { width: 9px; height: 9px; border-radius: 50% !important; background: rgba(14, 14, 14, 0.55); }
@@ -365,8 +353,10 @@ a { color: inherit; }
   border-bottom: 1px solid var(--line);
   height: 120px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   padding: 18px;
   transition: background .2s ease;
 }
@@ -390,8 +380,14 @@ a { color: inherit; }
   gap: 22px;
 }
 .work-card p { font-size: 15.5px; line-height: 1.55; color: #3A3A38; margin: 10px 0 0; max-width: 40ch; }
+.work-card {
+  background: #fff;
+  box-shadow: 0 30px 70px -25px rgba(14, 14, 14, 0.28);
+  padding: 18px;
+}
+.work-card .card-caption-clip { overflow: hidden; }
 .work-shot {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 484 / 347;
   background: repeating-linear-gradient(45deg, #F0F0EC 0 12px, #E9E9E3 12px 24px);
   border: 1px solid var(--line);
   display: flex;
@@ -434,30 +430,51 @@ a { color: inherit; }
    SERVICES — exact match
 ───────────────────────────────────────────────────────────────────────────── */
 .services-head { padding-top: clamp(40px, 6vh, 70px); padding-bottom: clamp(20px, 3vh, 40px); }
-.service-band { padding: clamp(46px, 7vw, 84px) var(--pad); }
+.service-band { padding: clamp(20px, 2.5vw, 32px) var(--pad); }
 .service-inner {
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: clamp(30px, 5vw, 70px);
+  gap: clamp(24px, 4vw, 56px);
   align-items: center;
 }
 .service-num { display: flex; align-items: center; gap: 18px; }
 .service-num .num {
   font-family: 'Newsreader', serif;
   font-style: italic;
-  font-size: clamp(40px, 5vw, 68px);
+  font-size: clamp(32px, 3.5vw, 48px);
   color: rgba(14, 14, 14, 0.28);
   line-height: 1;
 }
-.service-band h3 { font-weight: 700; font-size: clamp(26px, 3vw, 40px); letter-spacing: -0.02em; margin: 0 0 16px; }
-.service-band p { font-size: 16px; line-height: 1.6; color: #23231f; margin: 0 0 22px; max-width: 52ch; }
+.service-band h3 { font-weight: 400; font-size: clamp(20px, 1.8vw, 26px); letter-spacing: -0.01em; margin: 0 0 12px; }
+.service-band p { font-size: 14.5px; line-height: 1.5; color: #23231f; margin: 0 0 16px; max-width: 52ch; }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    STATS / TESTIMONIAL — exact match
 ───────────────────────────────────────────────────────────────────────────── */
-.stats-section { padding-top: clamp(80px, 12vh, 150px); padding-bottom: clamp(80px, 12vh, 150px); }
+.stats-section { position: relative; padding-top: clamp(140px, 18vh, 220px); padding-bottom: clamp(80px, 12vh, 150px); overflow: hidden; }
+/* Abstract soft-blur backdrop standing in for the reference's background
+   video/photo — deliberately not a stock "happy client" photo, since that
+   would read as a fake testimonial visual before a word is even read. */
+.stats-bg-visual {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 420px;
+  pointer-events: none;
+  background:
+    radial-gradient(closest-side at 30% 20%, rgba(175, 196, 242, 0.35), transparent 70%),
+    radial-gradient(closest-side at 75% 10%, rgba(241, 88, 31, 0.12), transparent 65%);
+  filter: blur(30px);
+}
+.stats-bg-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, #fff 85%);
+}
 .stats-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
 .stats-head .lead { margin: 0 auto; }
 
@@ -488,10 +505,43 @@ a { color: inherit; }
 .t-name { display: block; font-weight: 600; font-size: 16px; }
 .t-role { display: block; font-size: 14px; color: #7A7A76; margin-top: 4px; }
 
+.testimonial-rotator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 64px 0 0;
+  text-align: left;
+}
+.testimonial-rotator .testimonial { margin: 0; text-align: left; max-width: 760px; }
+.testimonial-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.testimonial-nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.testimonial-nav button:hover { border-color: var(--orange); color: var(--orange); background: #fff7f3; }
+.testimonial-nav button:disabled { opacity: 0.35; cursor: default; }
+.testimonial-nav button:disabled:hover { border-color: var(--line); color: var(--ink); background: #fff; }
+
 /* ─────────────────────────────────────────────────────────────────────────────
    FAQ — exact match
 ───────────────────────────────────────────────────────────────────────────── */
-.faq-section { max-width: 980px; padding-top: clamp(40px, 6vh, 70px); padding-bottom: clamp(70px, 10vh, 120px); }
+/* No max-width override — inherits the shared 1320px (--max) from
+   .section, matching the same left edge as Services/Stats/Work instead of
+   sitting narrower as an inconsistent exception. */
+.faq-section { padding-top: clamp(40px, 6vh, 70px); padding-bottom: clamp(70px, 10vh, 120px); }
 .faq-head { margin-bottom: 44px; }
 .faq-list { display: flex; flex-direction: column; }
 .faq-item { border-top: 1px solid var(--line); }
@@ -521,6 +571,7 @@ a { color: inherit; }
 }
 .faq-a p {
   margin: 0;
+  max-width: 70ch;
   padding: 0 4px 28px;
   font-size: 16px;
   line-height: 1.65;
@@ -537,6 +588,26 @@ a { color: inherit; }
   padding: clamp(64px, 10vw, 130px) var(--pad);
   overflow: hidden;
 }
+/* Soften the one hard color-block cut on the page (white FAQ -> yellow
+   Contact -> off-white Footer) into ~180px fade zones so the boundary reads
+   as a continuous environment instead of a flip. */
+.contact-section::before,
+.contact-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 180px;
+  pointer-events: none;
+}
+.contact-section::before {
+  top: 0;
+  background: linear-gradient(to bottom, #ffffff, transparent);
+}
+.contact-section::after {
+  bottom: 0;
+  background: linear-gradient(to top, #FBFBF8, transparent);
+}
 .tag {
   position: absolute;
   font-size: 13px;
@@ -548,6 +619,21 @@ a { color: inherit; }
 .contact-inner .eyebrow { color: #3A3A30; }
 .contact-h2 { font-size: clamp(40px, 6vw, 84px); letter-spacing: -0.035em; line-height: 0.98; margin: 0 0 26px; }
 .contact-lead { font-size: 18px; line-height: 1.55; color: #33332a; margin: 0 auto 38px; max-width: 50ch; }
+.contact-input {
+  font-size: 15px;
+  padding: 14px 18px;
+  border: 1.5px solid rgba(14, 14, 14, 0.18);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: var(--ink);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.contact-input::placeholder { color: rgba(51, 51, 42, 0.55); }
+.contact-input:focus {
+  outline: none;
+  border-color: var(--orange);
+  background: #fff;
+}
 
 /* ─────────────────────────────────────────────────────────────────────────────
    FOOTER — exact match
@@ -580,6 +666,16 @@ a { color: inherit; }
   letter-spacing: -0.04em;
   color: var(--blue);
   line-height: 0.9;
+  white-space: nowrap;
+}
+.industries-marquee-text {
+  font-family: Newsreader, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(28px, 4vw, 48px);
+  letter-spacing: -0.01em;
+  color: var(--blue);
+  text-transform: uppercase;
   white-space: nowrap;
 }
 .footer-cta-arrow {
