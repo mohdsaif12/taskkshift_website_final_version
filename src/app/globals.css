@@ -24,14 +24,7 @@
 ───────────────────────────────────────────────────────────────────────────── */
 * { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-  /* overflow-x: clip clips content without creating a scroll container.
-     Using "hidden" here would make <html> the scroll container and BREAK
-     position:sticky (stacking cards, pinned sections) on desktop.
-     "clip" prevents horizontal scroll on mobile without that side-effect. */
-  overflow-x: clip;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -39,8 +32,7 @@ body {
   color: var(--ink);
   font-family: 'Schibsted Grotesk', sans-serif;
   -webkit-font-smoothing: antialiased;
-  /* Same reasoning: clip instead of hidden so sticky children still work. */
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 ::selection { background: var(--blue); color: #fff; }
